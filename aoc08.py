@@ -4,7 +4,6 @@ instructions = [["jmp","+",149],["acc","-",11],["nop","+",95],["acc","-",6],["jm
 
 
 succeeded = False
-print(len(instructions))
 poging = 0
 
 def tryProgram():

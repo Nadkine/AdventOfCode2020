@@ -2,15 +2,12 @@ array = [30,17,44,5,10,33,19,31,22,25,39,49,1,26,38,36,14,27,15,50,28,41,20,34,1
 
 def checkContagiousSum(number, min_i,max_i,full_array):
     good = False
-    #print(len(full_array[min_i:max_i]))
-    for i in range(min_i,25+min_i):
-        for j in range (i,25+min_i):
-            #print('{} - {} - {} - {}'.format(i,j,number,i+j == number))
+    for i in range(min_i,max_i):
+        for j in range (i,max_i):
             if full_array[i]+full_array[j] == number:
                 good = True
-    if good:
-        return good
-    else:
+    if not good:
+        good = False
         print(number)
         #begin count
         for i in range(25+min_i):
@@ -22,10 +19,9 @@ def checkContagiousSum(number, min_i,max_i,full_array):
                     sum += full_array[k]
                 #If answer 
                 if sum == number:
-                    print("ANSWER")
                     print(max(full_array[i:j])+min(full_array[i:j]))
                     return False
-        return False
+    return good
 
 
 def checkSum(number, checkarray):
@@ -40,13 +36,10 @@ def checkSum(number, checkarray):
 min_i = 0
 max_i = 25 
 correct = True
-for i,item in enumerate(array):
-    if i < 25:
-        pass
-    else:
-        correct = checkContagiousSum(item, min_i,max_i,array)
-        min_i += 1
-        max_i += 1
+for i,item in enumerate(array[max_i:]):
+    correct = checkContagiousSum(item, min_i,max_i,array)
+    min_i += 1
+    max_i += 1
     if not correct:
         print("FINISHED")
         print(item)

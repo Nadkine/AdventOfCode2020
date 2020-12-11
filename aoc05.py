@@ -4,48 +4,28 @@ higest_seat_id = 0
 seat_ids = []
 all_rows = []
 all_cols = []
+
 for ticket in boarding_passes:
     bin_ticket = ''
-    row = ''
-    col = ''
     for l in ticket:
         if l == 'B' or l == 'R':
             bin_ticket += '1'
         else:
             bin_ticket += '0'
 
-    # row_bin = int(bin_ticket[:-3], base=2)
-    # col_bin = 
     row_int = int(bin_ticket[:-3], base=2)
     col_int = int(bin_ticket[-3:], base=2)
-    # print(row_bin)
-    # print(col_bin)
     all_rows.append(row_int)
     all_cols.append(col_int)
     seat_id = row_int * 8 + col_int
     seat_ids.append(seat_id)
     if seat_id > higest_seat_id:
-        higest_seat_id = seat_id
-print higest_seat_id
-list.sort(seat_ids)
+        highest_seat_id = seat_id
+print(highest_seat_id)
 
+list.sort(seat_ids)
 for id in seat_ids:
     if id - 1 not in seat_ids:
-        print id
+        print(id)
     if id + 1 not in seat_ids:
-        print id
-
-
-
-
-# for i in range(1,127):
-#     for j in range(0,8):
-#         if j not in all_cols:
-#             if i not in all_rows:
-#                 print('{}-{}'.format(i,j))
-# for row,col in zip(all_rows,all_cols):
-#     if row - 1 in all_rows
-
-
-# if j - 1 not in all_cols or  j + 1 not in all_cols:
-#             if i - 1 not in all_rows or i + 1 not in all_rows:
+        print(id)

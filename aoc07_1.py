@@ -14,8 +14,6 @@ new_bags  = []
 used_bags = ['shiny gold']
 checked_bags = []
 while len(used_bags) > 0: 
-    print("Here")
-    print(used_bags)
     for rules_array in rules_matrix:
         headbag = rules_array[0][:-5]
         for i,rule in enumerate(rules_array):
@@ -28,12 +26,8 @@ while len(used_bags) > 0:
     for bag in used_bags:
         checked_bags.append(bag)
     set(checked_bags)
-    used_bags = new_bags
-    set(used_bags)
+    used_bags = set(new_bags)
     new_bags = []
-print(new_bags)
-print(used_bags)
-print(checked_bags)
-print(len(checked_bags))
-print(len(set(checked_bags)))
+
+print(len(set(checked_bags))-1)
 

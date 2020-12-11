@@ -4,7 +4,4 @@ for i in range(len(array)):
     for j in range (i,len(array)):
         for k in range (j,len(array)):
             if array[i] + array[j] + array[k] == 2020:
-                print(array[k])
-                print(array[i])
-                print(array[j])
                 print(array[i]*array[j]*array[k])

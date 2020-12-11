@@ -1,5 +1,6 @@
+import copy
+
 board = []
-board_copy = []
 with open('data11.txt','r') as f:
     for line in f.readlines():
         row = []
@@ -7,9 +8,9 @@ with open('data11.txt','r') as f:
             if seat != '\n':
                 row.append(seat)
         board.append(row)
+
 different = True
 counter = 0
-
 
 def getSeats(row_i, seat_i,board,row_counter,seat_counter):
     k = 0
@@ -32,11 +33,7 @@ def getSeats(row_i, seat_i,board,row_counter,seat_counter):
 
 while different:
     counter += 1
-    print(counter)
-    #get comparisonboard
-    board_copy = []
-    for row in board:
-        board_copy.append(row.copy())
+    board_copy = copy.deepcopy(board)
 
     for row_i,row in enumerate(board):
         for seat_i,seat in enumerate(row):
@@ -48,17 +45,12 @@ while different:
             if available == 8 and seat == "L":
                 board[row_i][seat_i] = "#"
             if available < 4 and seat == "#": 
-                board[row_i][seat_i] = "L"   
-    #check if the same (not clean) 
-    board_count = 0
-    board_copy_count = 0
-    for row in board:
-        board_count += row.count('#')
-    for row in board_copy:
-        board_copy_count += row.count('#')
+                board[row_i][seat_i] = "L" 
+
+    board_count = sum(x.count('#') for x in board)
+    board_copy_count = sum(x.count('#') for x in board_copy)
     print(board_count)
-    if board_copy_count == board_count:
-        different = False
+    different = (board_copy_count != board_count)
 print("FINISHED")
 
 
